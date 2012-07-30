@@ -1,0 +1,265 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F11779CD15C710D400DAB807 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F11779CC15C710D400DAB807 /* UIKit.framework */; };
+		F11779CF15C710D400DAB807 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F11779CE15C710D400DAB807 /* Foundation.framework */; };
+		F11779D115C710D400DAB807 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F11779D015C710D400DAB807 /* CoreGraphics.framework */; };
+		F11779D715C710D400DAB807 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F11779D515C710D400DAB807 /* InfoPlist.strings */; };
+		F11779D915C710D400DAB807 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F11779D815C710D400DAB807 /* main.m */; };
+		F11779DD15C710D400DAB807 /* BLAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F11779DC15C710D400DAB807 /* BLAAppDelegate.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F11779C815C710D400DAB807 /* Networking Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Networking Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F11779CC15C710D400DAB807 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F11779CE15C710D400DAB807 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F11779D015C710D400DAB807 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F11779D415C710D400DAB807 /* Networking Test-Info.plist */ = {isa = PBXFileReference; path = "Networking Test-Info.plist"; sourceTree = "<group>"; };
+		F11779D615C710D400DAB807 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F11779D815C710D400DAB807 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F11779DA15C710D400DAB807 /* Networking Test-Prefix.pch */ = {isa = PBXFileReference; path = "Networking Test-Prefix.pch"; sourceTree = "<group>"; };
+		F11779DB15C710D400DAB807 /* BLAAppDelegate.h */ = {isa = PBXFileReference; path = BLAAppDelegate.h; sourceTree = "<group>"; };
+		F11779DC15C710D400DAB807 /* BLAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLAAppDelegate.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F11779C515C710D400DAB807 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F11779CD15C710D400DAB807 /* UIKit.framework in Frameworks */,
+				F11779CF15C710D400DAB807 /* Foundation.framework in Frameworks */,
+				F11779D115C710D400DAB807 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F11779BD15C710D400DAB807 = {
+			isa = PBXGroup;
+			children = (
+				F11779D215C710D400DAB807 /* Networking Test */,
+				F11779CB15C710D400DAB807 /* Frameworks */,
+				F11779C915C710D400DAB807 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F11779C915C710D400DAB807 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F11779C815C710D400DAB807 /* Networking Test.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F11779CB15C710D400DAB807 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F11779CC15C710D400DAB807 /* UIKit.framework */,
+				F11779CE15C710D400DAB807 /* Foundation.framework */,
+				F11779D015C710D400DAB807 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F11779D215C710D400DAB807 /* Networking Test */ = {
+			isa = PBXGroup;
+			children = (
+				F11779DB15C710D400DAB807 /* BLAAppDelegate.h */,
+				F11779DC15C710D400DAB807 /* BLAAppDelegate.m */,
+				F11779D315C710D400DAB807 /* Supporting Files */,
+			);
+			path = "Networking Test";
+			sourceTree = "<group>";
+		};
+		F11779D315C710D400DAB807 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F11779D415C710D400DAB807 /* Networking Test-Info.plist */,
+				F11779D515C710D400DAB807 /* InfoPlist.strings */,
+				F11779D815C710D400DAB807 /* main.m */,
+				F11779DA15C710D400DAB807 /* Networking Test-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F11779C715C710D400DAB807 /* Networking Test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F11779E015C710D400DAB807 /* Build configuration list for PBXNativeTarget "Networking Test" */;
+			buildPhases = (
+				F11779C415C710D400DAB807 /* Sources */,
+				F11779C515C710D400DAB807 /* Frameworks */,
+				F11779C615C710D400DAB807 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Networking Test";
+			productName = "Networking Test";
+			productReference = F11779C815C710D400DAB807 /* Networking Test.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F11779BF15C710D400DAB807 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = BLA;
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "Tracks Media";
+			};
+			buildConfigurationList = F11779C215C710D400DAB807 /* Build configuration list for PBXProject "Networking Test" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F11779BD15C710D400DAB807;
+			productRefGroup = F11779C915C710D400DAB807 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F11779C715C710D400DAB807 /* Networking Test */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F11779C615C710D400DAB807 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F11779D715C710D400DAB807 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F11779C415C710D400DAB807 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F11779D915C710D400DAB807 /* main.m in Sources */,
+				F11779DD15C710D400DAB807 /* BLAAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F11779D515C710D400DAB807 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F11779D615C710D400DAB807 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F11779DE15C710D400DAB807 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F11779DF15C710D400DAB807 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F11779E115C710D400DAB807 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Networking Test/Networking Test-Prefix.pch";
+				INFOPLIST_FILE = "Networking Test/Networking Test-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F11779E215C710D400DAB807 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Networking Test/Networking Test-Prefix.pch";
+				INFOPLIST_FILE = "Networking Test/Networking Test-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F11779C215C710D400DAB807 /* Build configuration list for PBXProject "Networking Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F11779DE15C710D400DAB807 /* Debug */,
+				F11779DF15C710D400DAB807 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F11779E015C710D400DAB807 /* Build configuration list for PBXNativeTarget "Networking Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F11779E115C710D400DAB807 /* Debug */,
+				F11779E215C710D400DAB807 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F11779BF15C710D400DAB807 /* Project object */;
+}
