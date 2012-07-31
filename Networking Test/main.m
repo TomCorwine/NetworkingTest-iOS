@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-#import "BLAAppDelegate.h"
+#import "TRKAppDelegate.h"
 
 int main(int argc, char *argv[])
 {
-	@autoreleasepool {
-	    return UIApplicationMain(argc, argv, nil, NSStringFromClass([BLAAppDelegate class]));
+	@autoreleasepool
+	{
+	    return UIApplicationMain(argc, argv, nil, NSStringFromClass([TRKAppDelegate class]));
 	}
 }

@@ -1,5 +1,5 @@
 //
-//  BLAAppDelegate.h
+//  TRKViewController.h
 //  Networking Test
 //
 //  Created by Tom Corwine on 7/30/12.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BLAAppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
+@interface TRKViewController : UIViewController
 
 @end
