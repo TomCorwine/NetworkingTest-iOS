@@ -10,7 +10,7 @@
 
 #import "AFNetworking.h"
 
-#define kTRKViewController_DownloadURLString				@""
+#define kTRKViewController_DownloadURLString				@"https://s3.amazonaws.com/networking-test/sample.mp4"
 
 #define kTRKViewController_ProgressBarTagOffset				400
 #define kTRKViewController_NumberOfProgressBars				20
