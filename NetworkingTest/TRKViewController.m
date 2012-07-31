@@ -10,8 +10,9 @@
 
 #import "AFNetworking.h"
 
-#define kTRKViewController_DownloadURLString				@"https://s3.amazonaws.com/networking-test/sample.mp4"
+#define kTRKViewController_DownloadURLString				@"http://s3.amazonaws.com/networking-test/sample.mp4"
 
+#define kTRKViewController_PriorityButtonTagOffset			200
 #define kTRKViewController_ProgressBarTagOffset				400
 #define kTRKViewController_NumberOfProgressBars				20
 
@@ -22,13 +23,16 @@
 {
 	UILabel *_label;
 	UIStepper *_stepper;
+	UISegmentedControl *_segmentedControl;
 	
+	NSMutableArray *_operationsArray;
 	NSOperationQueue *_networkQueue;
 	AFHTTPClient *_httpClient;
 }
 
 - (void)stepperValueWasChanged:(id)sender;
 - (void)goButtonWasPressed:(id)sender;
+- (void)priorityButtonWasPressed:(id)sender;
 
 @end
 
@@ -40,6 +44,7 @@
     
 	if (self)
 	{
+		_operationsArray = [[NSMutableArray alloc] init];
 		_networkQueue = [[NSOperationQueue alloc] init];
 		_httpClient = [[AFHTTPClient alloc] initWithBaseURL:nil];
 		
@@ -56,12 +61,12 @@
 	CGFloat width = self.view.frame.size.width;
 	
 	// Stepper
-	_label = [[UILabel alloc] initWithFrame:CGRectMake(10, 22, 20, 20)];
+	_label = [[UILabel alloc] initWithFrame:CGRectMake(5, 22, 20, 20)];
 	_label.textAlignment = UITextAlignmentRight;
 	_label.text = @"1";
 	[self.view addSubview:_label];
-	
-	_stepper = [[UIStepper alloc] initWithFrame:CGRectMake(40, 20, 80, 40)];
+
+	_stepper = [[UIStepper alloc] initWithFrame:CGRectMake(32, 20, 60, 40)];
 	[_stepper addTarget:self action:@selector(stepperValueWasChanged:) forControlEvents:UIControlEventValueChanged];
 	_stepper.autorepeat = YES;
 	_stepper.wraps = NO;
@@ -71,9 +76,15 @@
 	_stepper.stepValue = 1;
 	[self.view addSubview:_stepper];
 	
+	// Concurrent Add Control
+	_segmentedControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Seq", @"Con", nil]];
+	_segmentedControl.frame = CGRectMake(135, 17, 80, 30);
+	_segmentedControl.selectedSegmentIndex = 0;
+	[self.view addSubview:_segmentedControl];
+	
 	// Go Button
 	UIButton *goButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	goButton.frame = CGRectMake(width - 170, 10, 160, 44);
+	goButton.frame = CGRectMake(width - 100, 10, 90, 44);
 	[goButton setTitle:@"Go" forState:UIControlStateNormal];
 	[goButton setTitle:@"Stop" forState:UIControlStateSelected];
 	[goButton addTarget:self action:@selector(goButtonWasPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -82,7 +93,16 @@
 	// Progress Bars
 	for (int i = 0; i < kTRKViewController_NumberOfProgressBars; i++)
 	{
-		UIProgressView *progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(10, 60 + (i * 20), width - 20, 10)];
+		UIButton *priorityButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+		priorityButton.frame = CGRectMake(5, 57 + (i * 20), 25, 16);
+		priorityButton.tag = kTRKViewController_PriorityButtonTagOffset + i;
+		[priorityButton setTitle:@"N" forState:UIControlStateNormal];
+		[priorityButton setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
+		[priorityButton setTitle:@"H" forState:UIControlStateSelected];
+		[priorityButton addTarget:self action:@selector(priorityButtonWasPressed:) forControlEvents:UIControlEventTouchUpInside];
+		[self.view addSubview:priorityButton];
+		
+		UIProgressView *progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(35, 60 + (i * 20), width - 40, 10)];
 		progressView.tag = kTRKViewController_ProgressBarTagOffset + i;
 		progressView.alpha = kTRKViewController_ProgressBarInactiveAlpha;
 		[self.view addSubview:progressView];
@@ -107,6 +127,7 @@
 	UIButton *button = sender;
 	
 	[_networkQueue cancelAllOperations];
+	[_operationsArray removeAllObjects];
 	
 	button.selected = (button.selected == NO);
 	
@@ -115,6 +136,7 @@
 		case NO:
 			
 			_stepper.enabled = YES;
+			_segmentedControl.enabled = YES;
 			
 			for (int i = 0; i < kTRKViewController_NumberOfProgressBars; i++)
 			{
@@ -128,14 +150,17 @@
 		default:
 		{
 			_stepper.enabled = NO;
+			_segmentedControl.enabled = NO;
 			
 			NSInteger maxNumberOfOperations = _stepper.value;
 			_networkQueue.maxConcurrentOperationCount = maxNumberOfOperations;
 			
-			for (int i = 0; i < maxNumberOfOperations; i++)
+			for (int i = 0; i < kTRKViewController_NumberOfProgressBars; i++)
 			{
 				UIProgressView *progressView = (UIProgressView *)[self.view viewWithTag:kTRKViewController_ProgressBarTagOffset + i];
 				progressView.alpha = kTRKViewController_ProgressBarActiveAlpha;
+				
+				UIButton *priorityButton = (UIButton *)[self.view viewWithTag:kTRKViewController_PriorityButtonTagOffset + i];
 				
 				NSMutableURLRequest *request = [_httpClient requestWithMethod:@"GET" path:kTRKViewController_DownloadURLString parameters:nil];
 				AFHTTPRequestOperation *operation = [_httpClient HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject){
@@ -152,12 +177,41 @@
 					float progress = (double)totalBytesRead / (double)totalBytesExpectedToRead;
 					progressView.progress = progress;
 				}];
+
+				if (priorityButton.selected)
+					operation.queuePriority = NSOperationQueuePriorityHigh;
+				else
+					operation.queuePriority = NSOperationQueuePriorityNormal;
 				
-				[_networkQueue addOperation:operation];
+				[_operationsArray addObject:operation];
+				
+				if (_segmentedControl.selectedSegmentIndex == 0)
+					[_networkQueue addOperation:operation];
 			}
+			
+			if (_segmentedControl.selectedSegmentIndex)
+				[_networkQueue addOperations:_operationsArray waitUntilFinished:NO];
 			
 			break;
 		}
+	}
+}
+
+- (void)priorityButtonWasPressed:(id)sender
+{
+	UIButton *priorityButton = sender;
+	NSInteger index = priorityButton.tag - kTRKViewController_PriorityButtonTagOffset;
+	
+	priorityButton.selected = (priorityButton.selected == NO);
+
+	if (index < _operationsArray.count)
+	{
+		AFHTTPRequestOperation *operation = [_operationsArray objectAtIndex:index];
+		
+		if (priorityButton.selected)
+			operation.queuePriority = NSOperationQueuePriorityHigh;
+		else
+			operation.queuePriority = NSOperationQueuePriorityNormal;
 	}
 }
 
